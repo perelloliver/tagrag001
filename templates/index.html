@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Input Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            gap: 20px;
+        }
+        .form-container {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+        }
+        .image-container {
+            flex: 3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .image-container img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        form label {
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+        form input[type="text"] {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 18px;
+            width: 100%;
+        }
+        form input[type="submit"] {
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+            width: 100%;
+        }
+        form input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .response {
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .response h2 {
+            margin-top: 0;
+            font-size: 20px;
+            color: #333;
+        }
+    </style>
+     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Page loaded, clearing form fields');
+            var form = document.querySelector('form');
+            var inputs = form.querySelectorAll('input[type="text"]');
+            inputs.forEach(function(input) {
+                input.value = '';
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h1>User Input Form</h1>
+            <form method="POST">
+                {{ form.hidden_tag() }}
+                {{ form.text_input.label }}
+                {{ form.text_input(class_="form-control") }}<br>
+                {{ form.submit(class_="btn btn-primary") }}
+            </form>
+            {% if response %}
+            <div class="response">
+                <h2>Response:</h2>
+                <p>{{ response[0] }}</p>
+                <p>RAG Response: {{ response[1] }}</p>
+            </div>
+            {% endif %}
+        </div>
+        {% if background_image %}
+        <div class="image-container">
+            <img src="/static/assets/{{ background_image }}" alt="Background Image">
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
