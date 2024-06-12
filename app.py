@@ -74,10 +74,11 @@
 # if __name__ == '__main__':
 #     app.run(debug=True)
 
-#Debug to see if it is heroku env or me
+#Dummy app to check setup.py
 
 import logging
 from flask import Flask
+import setup
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
@@ -86,10 +87,13 @@ logger = logging.getLogger(__name__)
 # Create Flask app
 app = Flask(__name__)
 
+# Initialize LLM and get the message
+response_message = setup.setup_llm()
+
 @app.route('/')
 def hello():
     logger.info("Handling request to root URL")
-    return "Hello, World!"
+    return response_message
 
 if __name__ == "__main__":
     logger.info("Starting Flask app...")
