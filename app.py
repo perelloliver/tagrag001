@@ -6,7 +6,6 @@ from narrative import *
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'kitandkaboodle'
-api_key = os.environ.get('OPENAI_API_KEY')
 
 try: 
     class TextInputForm(FlaskForm):
