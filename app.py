@@ -70,7 +70,7 @@ try:
         #Render
         return render_template('index.html', form=form, background_image=background_image)
 except Exception as e:
-    app.logger.error(f"Error during app startup: {e}"))
+    app.logger.error(f"Error during app startup: {e}")
 
 if __name__ == '__main__':
     app.run(debug=True)
