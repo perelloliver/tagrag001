@@ -7,13 +7,13 @@ logging.basicConfig(level=logging.INFO)
 
 # api_key = os.getenv("OPENAI_API_KEY")
 
-api_key = os.environ.get("OPENAI_API_KEY")
+# api_key = os.environ.get("OPENAI_API_KEY")
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 def setup_llm():
-    api_key = os.getenv('OPENAI_API_KEY')
+    api_key = "sk-proj-ewmW4Vdedh9tgqFFuXrLT3BlbkFJaDfQr21qUPYysywggbwB"
     if api_key is None:
         logger.error("API key is missing")
         return "API key is missing"
@@ -47,7 +47,7 @@ def setup_llm():
         logger.info(f"Retrying in {wait_time} seconds...")
         time.sleep(wait_time)
 
-    return "An error occurred during LLM setup after multiple attempts"
+    return f"An error occurred during LLM setup after multiple attempts: {e}"
 
 #LOCAL
 
