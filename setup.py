@@ -32,8 +32,9 @@ def setup_llm():
             logger.error("API key is missing")
             return "API key is missing"
     except Exception as e:
-        logger.error(f"Error during setup: {e}")
-        return "An error occurred during LLM setup"
+        error = f"An error occurred during LLM setup: {e}"
+        logger.error(error)
+        return error
 
 
 #LOCAL
