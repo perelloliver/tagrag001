@@ -1,17 +1,14 @@
 from flask import Flask, render_template, request
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
-# from langchain_core.runnables.history import RunnableWithMessageHistory
-# from langchain_core.chat_history import InMemoryChatMessageHistory
 from narrative import *
 
-# Create the Flask app
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'kitandkaboodle'
+api_key = os.environ.get('OPENAI_API_KEY')
 
 try: 
-    # Define the form class
     class TextInputForm(FlaskForm):
         text_input = StringField('What do you do?')
         submit = SubmitField('Send action')
@@ -26,6 +23,7 @@ try:
         
 
     # Create a route to handle form submission
+
     @app.route('/', methods=['GET', 'POST'])
     def index():
         form = TextInputForm()
@@ -35,6 +33,7 @@ try:
             user_input = form.text_input.data
             
             # Invoke storytelling_runnable to generate response
+
             response = storytelling_runnable.invoke(
             {"input": user_input, "IP": system_params["IP"], "rules": system_params["rules"], "injection_rules": system_params["injection_rules"]},
             config={"configurable": {"session_id": "abc123"}}
@@ -43,6 +42,7 @@ try:
             description = response.content
 
             # Pass output to RAG Chain
+
             rag_response = rag_chain.invoke(f"Return the most relevant filename based on the following story update. Prioritize key visual elements like roads, buildings, and environments. Return filename only: ' {user_input}. {description} ' ")
 
             # Update app background with RAG Chain output (you need to define this part)
