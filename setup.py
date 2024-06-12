@@ -41,13 +41,13 @@ def setup_llm():
 
             logger.info("LLM message retrieved successfully")
             return response_message
+        
         except Exception as e:
             logger.error(f"Error during setup: {e}")
-        attempt += 1
-        logger.info(f"Retrying in {wait_time} seconds...")
-        time.sleep(wait_time)
-
-    return f"An error occurred during LLM setup after multiple attempts: {e}"
+            attempt += 1
+            logger.info(f"Retrying in {wait_time} seconds...")
+            time.sleep(wait_time)
+            return f"An error occurred during LLM setup after multiple attempts: {e}"
 
 #LOCAL
 
