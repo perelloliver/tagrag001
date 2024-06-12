@@ -198,7 +198,6 @@ safetensors==0.4.3
 schedule==1.2.1
 Send2Trash==1.8.3
 shellingham==1.5.4
-six @ file:///tmp/build/80754af9/six_1644875935023/work
 slack_sdk==3.27.1
 sniffio==1.3.1
 soupsieve==2.5
@@ -211,11 +210,8 @@ tensorboard==2.16.2
 tensorboard-data-server==0.7.2
 tensorboard-plugin-wit==1.8.1
 tensorflow==2.16.1
-tensorflow-addons @ file:///Users/mac/Downloads/tensorflow_addons-0.17.1-cp39-cp39-macosx_11_0_arm64.whl#sha256=e59f4d18a98e12ec9332146362879436053daf6033c5c8e886dce0f83ec976b7
 tensorflow-estimator==2.9.0
 tensorflow-io-gcs-filesystem==0.36.0
-tensorflow-macos==2.9.2
-tensorflow-text @ file:///Users/mac/Downloads/tensorflow_text-2.16.1-cp39-cp39-macosx_11_0_arm64.whl#sha256=8a1c5c79fd29296c50354968a96f7fde4c7d324c3ec3315c0bd76e59cc5dae93
 termcolor==2.4.0
 terminado==0.18.1
 tiktoken==0.7.0
